@@ -9,11 +9,18 @@ public class Unicode {
 
     @Id
     @GeneratedValue
-    private char symbol;
     private int unicode;
     private String description;
+    private char symbol;
 
+    public Unicode() {
+    }
 
+    public Unicode(char symbol, int unicode, String description) {
+        this.symbol = symbol;
+        this.unicode = unicode;
+        this.description = description;
+    }
     public char getSymbol() {
         return symbol;
     }
