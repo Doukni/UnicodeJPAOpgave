@@ -18,15 +18,16 @@ public class InitData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Set<Character> chars = new HashSet<Character>();
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 111; i++) {
             chars.add((char)i);
         }
 
         for (Character c : chars) {
-            int unicode = (int) c;
-            Unicode u = new Unicode(unicode, c, "Auto-generate");
-            unicodeRepository.save(u);
-
+            if (unicodeRepository.findBySymbol(c).isEmpty()) {
+                int unicode = (int) c;
+                Unicode u = new Unicode(c, unicode, "Auto-generate");
+                unicodeRepository.save(u);
+            }
         }
     }
 }
